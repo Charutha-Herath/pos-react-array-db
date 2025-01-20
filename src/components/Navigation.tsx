@@ -32,15 +32,7 @@ export function Navigation() {
                             </Link>
                         </li>
                         <li>
-                            <Link className="custom-link block" to="/new-orders">
-                                New Orders
-                            </Link>
-                        </li>
-                        <li>
-                            <Link
-                                to="/orderdetail"
-                                className="bg-blue-500 text-white p-3 rounded shadow-lg hover:bg-blue-600 transition block text-center"
-                            >
+                            <Link to="/orderDetail" className="bg-blue-500 text-white p-3 rounded shadow-lg hover:bg-blue-600 transition block text-center">
                                 New Order
                             </Link>
                         </li>
