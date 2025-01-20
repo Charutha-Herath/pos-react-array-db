@@ -1,17 +1,18 @@
+import HomePic from "../assets/city super home.jpg";
 
-export function Home(){
-    return(
+export function Home() {
+    return (
         <>
-            <section id="home">
-                <div id="carouselExampleIndicators" className="relative w-full">
+            <section id="home" className="ml-64"> {/* Add margin to accommodate the navbar width */}
 
-                    <div className="relative overflow-hidden">
-                        <h1>Home Page</h1>
+                        <img
+                            src={HomePic}
+                            className="w-[1500px] h-[600px] "
+                            alt="City Super Home"
+                        />
 
-                    </div>
 
-                </div>
             </section>
         </>
-    )
+    );
 }
