@@ -1,4 +1,4 @@
-import pic from "../assets/react.svg"
+
 export function Home(){
     return(
         <>
@@ -7,7 +7,7 @@ export function Home(){
 
                     <div className="relative overflow-hidden">
                         <h1>Home Page</h1>
-                        <img src={pic} className="block w-full"/>
+
                     </div>
 
                 </div>
