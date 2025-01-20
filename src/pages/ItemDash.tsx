@@ -1,11 +1,64 @@
-
+import {useSelector} from "react-redux";
+import {useState} from "react";
+import {Item} from "../models/Item.ts";
+import AddItemModal from "../components/modal/AddItem.tsx";
+import UpdateItemModal from "../components/modal/UpdateItem.tsx";
+import AddButton from "../components/AddButton.tsx";
 
 
 export function ItemDash(){
+    const items = useSelector(state => state.item.items);
+    const [isAddModalOpen, setAddModalOpen] = useState<boolean>(false);
 
-    return(
+    const [isUpdateModalOpen, setUpdateModalOpen] = useState<boolean>(false);
+
+    const [selectedItem,setSelectedItem] = useState<Item|null>(null);
+
+    const showAddItem=()=>{
+        setAddModalOpen(true);
+
+    }
+    const showUpdateItem=(item:Item)=>{
+        setSelectedItem(item);
+        setUpdateModalOpen(true);
+
+    }
+
+
+    return (
         <>
-            <h1>Item Dashboard</h1>
+            <div className="flex flex-col items-center">
+                <h1 className="p-5 text-4xl font-light mb-2 text-gray-900">Item</h1>
+            </div>
+            <div>
+                <AddButton handleModal1={showAddItem}/>
+            </div>
+            <table className="table-auto border-2 border-sky-400 w-full">
+                <thead className="bg-sky-200">
+                <tr>
+                    <td>Book Name</td>
+                    <td>Author</td>
+                    <td>QTO</td>
+                    <td>Price</td>
+                </tr>
+                </thead>
+                <tbody>
+                {
+                    items.map((item:Item) => (
+                        <tr key={item.itemCode} onClick={() => showUpdateItem(item)}>
+                            <td>{item.desc}</td>
+                            <td>{item.author}</td>
+                            <td>{item.qto}</td>
+                            <td>{item.price}</td>
+                        </tr>
+                    ))
+                }
+                </tbody>
+            </table>
+            <AddItemModal isOpen={isAddModalOpen} onClose={()=>setAddModalOpen(false)}/>
+            <UpdateItemModal isOpen={isUpdateModalOpen}
+                             onClose={()=>setUpdateModalOpen(false)}
+                             selectedItem={selectedItem}/>
         </>
     )
 }
