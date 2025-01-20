@@ -1,3 +1,6 @@
-.custom-link{
-    @apply px-3 py-2 rounded ms-5  text-white font-thin hover:underline;
+.custom-link {
+    @apply px-4 py-2 rounded text-white font-medium bg-gray-700 hover:bg-gray-600 transition;
+}
+.custom-link:hover {
+    @apply shadow-md;
 }

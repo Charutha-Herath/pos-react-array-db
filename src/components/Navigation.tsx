@@ -1,28 +1,52 @@
-import {Link} from "react-router";
-import "../assets/Navigation.css"
-import logo from "../assets/react.svg"
-export function Navigation(){
+import { Link } from "react-router";
+import "../assets/Navigation.css";
+import logo from "../assets/city super main.jpg";
+
+export function Navigation() {
     return (
         <>
-            <header className="bg-gray-700/100 shadow-lg">
-                <nav className="px-4 py-3">
-                    <div className="flex justify-between items-center">
-                        <Link className="custom-link !important font-bold font-serif text-2xl" to="/"><img src={logo}/></Link>
-                        <div className="flex space-x-10">
-                            <Link className="custom-link" to="/">Home</Link>
-                            <Link className="custom-link" to="/customer">Customer</Link>
-                            <Link className="custom-link" to="/items">Item</Link><Link className="custom-link"
-                                                                                       to="/orders">Orders</Link>
-                            <Link className="custom-link" to="/orders">New Orders</Link>
-
-                            <Link to="/orderdetail"
-                                  className="fixed top-3 right-4 bg-blue-500 text-white p-3 rounded shadow-lg hover:bg-blue-600 transition">
+            <aside className="bg-gray-800 text-white w-64 min-h-screen fixed top-0 left-0 flex flex-col shadow-lg transform -translate-x-0">
+                <div className="flex items-center justify-center h-20 bg-gray-900">
+                    <img src={logo} alt="Logo" className="h-12" />
+                </div>
+                <nav className="flex-1">
+                    <ul className="flex flex-col p-4 space-y-4">
+                        <li>
+                            <Link className="custom-link block" to="/">
+                                Home
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className="custom-link block" to="/customer">
+                                Customer
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className="custom-link block" to="/items">
+                                Item
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className="custom-link block" to="/orders">
+                                Orders
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className="custom-link block" to="/new-orders">
+                                New Orders
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                to="/orderdetail"
+                                className="bg-blue-500 text-white p-3 rounded shadow-lg hover:bg-blue-600 transition block text-center"
+                            >
                                 New Order
                             </Link>
-                        </div>
-                    </div>
+                        </li>
+                    </ul>
                 </nav>
-            </header>
+            </aside>
         </>
-    )
+    );
 }
