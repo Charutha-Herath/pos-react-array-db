@@ -4,42 +4,18 @@ const AddButton = (props,children) => {
 
     return (
         <div className="container mx-auto mt-5">
-            <div className="flex justify-between mb-3">
-                {/*<div className="w-1/2">
-                    <form className="flex">
-                        <input
-                            className="form-control me-2 border rounded p-2"
-                            type="search"
-                            placeholder="Search customer"
-                            aria-label="Search"
-                            id="searchBar"
-                            onChange={(e) => props.setSearchTerm(e.target.value)}
-                        />
-                        <button
-                            className="btn btn-outline-primary border rounded p-2"
-                            type="button"
-                            id="searchButton"
-                            onClick={props.handleSearch}
-                        >
-                            Search
-                        </button>
-                    </form>
-                    <ul id="suggestions" className="mt-2">
-                        {props.suggestions.map((suggestion, index) => (
-                            <li key={index} className="border-b p-2">{suggestion}</li>
-                        ))}
-                    </ul>
-                </div>*/}
-                <div className="w-1/2 text-right">
-                    <button
-                        className="btn btn-outline-success border rounded p-2 mr-2"
-                        onClick={props.handleModal1}
-                    >
-                        Add
-                    </button>
-                </div>
+            <div className="flex justify-end mb-3">
+                {/* Add Button */}
+                <button
+                    className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-lg shadow-lg transition-all"
+                    onClick={props.handleModal1}
+                >
+                    <i className="bx bx-plus-circle text-2xl"></i>
+                    Add
+                </button>
             </div>
         </div>
+
     );
 };
 

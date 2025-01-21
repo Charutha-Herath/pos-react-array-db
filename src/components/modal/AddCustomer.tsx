@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import {addCustomer} from "../../reducer/CustomerSlice.ts";
 import {v4} from "uuid";
-
+import "../../assets/AddCustomerCard.css"
 
 interface AddCustomerModalProps {
     isOpen: boolean;
@@ -31,23 +31,61 @@ const AddCustomerModal: React.FC<AddCustomerModalProps> = ({ isOpen, onClose }) 
     };
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center z-50">
-            <div className="bg-white p-5 rounded shadow-lg">
-                <h2 className="text-xl mb-4">Add Customer</h2>
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50 backdrop-blur-sm">
+            <div
+                className="bg-gradient-to-br from-white via-blue-100 to-blue-50 p-8 rounded-lg shadow-2xl transform transition-transform duration-300 scale-95 sm:scale-100 animate-fadeIn"
+            >
+                {/* Modal Header */}
+                <h2 className="text-3xl font-extrabold mb-6 text-blue-700 text-center border-b-2 border-blue-300 pb-3">
+                    Add Customer
+                </h2>
+
+                {/* Form */}
                 <form onSubmit={handleSubmit}>
-                    <input type="text" placeholder="Name" className="border p-2 mb-2 w-full"
-                           required onChange={(e)=>setName(e.target.value)} />
-                    <input type="text" placeholder="Address" className="border p-2 mb-2 w-full"
-                           required onChange={(e)=>setAddress(e.target.value)} />
-                    <input type="tel" placeholder="Phone" className="border p-2 mb-2 w-full"
-                           required onChange={(e)=>setPhone(e.target.value)} />
-                    <div className="flex justify-end">
-                        <button type="button" className="mr-2" onClick={onClose}>Cancel</button>
-                        <button type="submit" className="bg-blue-500 text-white p-2 rounded">Add</button>
+                    {/* Input Fields */}
+                    <input
+                        type="text"
+                        placeholder="Name"
+                        className="border-2 border-blue-300 p-3 mb-4 w-full rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-500 transition shadow-sm"
+                        required
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                    <input
+                        type="text"
+                        placeholder="Address"
+                        className="border-2 border-blue-300 p-3 mb-4 w-full rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-500 transition shadow-sm"
+                        required
+                        onChange={(e) => setAddress(e.target.value)}
+                    />
+                    <input
+                        type="tel"
+                        placeholder="Phone"
+                        className="border-2 border-blue-300 p-3 mb-6 w-full rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-500 transition shadow-sm"
+                        required
+                        onChange={(e) => setPhone(e.target.value)}
+                    />
+
+                    {/* Action Buttons */}
+                    <div className="flex justify-end space-x-4">
+                        <button
+                            type="button"
+                            className="bg-red-500 text-white px-5 py-2 rounded-lg hover:bg-red-600 transition shadow-md"
+                            onClick={onClose}
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            type="submit"
+                            className="bg-green-500 text-white px-5 py-2 rounded-lg hover:bg-green-600 transition shadow-md"
+                        >
+                            Add
+                        </button>
                     </div>
                 </form>
             </div>
         </div>
+
+
     );
 };
 
