@@ -20,38 +20,59 @@ export function OrdersDash(){
     }
     return (
         <>
-            <div className="flex flex-col items-center">
-                <h1 className="p-5 text-4xl font-light mb-2 text-gray-900">Orders</h1>
-            </div>
-            <div>
-                <SearchOrder handleSearch={handleSearch} setSearchTerm={setSearchTerm}>Search</SearchOrder>
-            </div>
-            <table className="table-auto border-2 border-sky-400 w-full">
-                <thead className="bg-sky-200">
-                <tr>
-                    <td>OrderId</td>
-                    <td>CustomerName</td>
-                    <td>Date</td>
-                    <td>Total</td>
-                    <td>Discount</td>
-                    <td>Subtotal</td>
-                </tr>
-                </thead>
-                <tbody>
-                {
-                    orders.map((order: Order) => (
-                        <tr key={order.orderId} onClick={() => handleOrder(order)}>
-                            <td>{order.orderId}</td>
-                            <td>{order.customerName}</td>
-                            <td>{order.date}</td>
-                            <td>{order.total}</td>
-                            <td>{order.discount}</td>
-                            <td>{order.subtotal}</td>
+            <div className="flex flex-col bg-gray-50 p-8 min-h-screen" style={{marginLeft: '250px'}}>
+                {/* Header Section */}
+                <div className="bg-gradient-to-r from-red-500 via-red-400 to-red-300 text-white p-6 rounded-lg shadow-md">
+                    <h1 className="text-5xl font-bold ">Orders Dashboard</h1>
+                    <p>Track and manage your orders effortlessly.</p>
+                </div>
+
+                {/* Search Bar Section */}
+                <div className="flex justify-end mb-6">
+                    <SearchOrder
+                        handleSearch={handleSearch}
+                        setSearchTerm={setSearchTerm}
+                        className="w-full max-w-md"
+                    >
+                        Search
+                    </SearchOrder>
+                </div>
+
+                {/* Orders Table */}
+                <div className="overflow-hidden rounded-lg shadow-lg bg-white">
+                    <table className="table-auto w-full">
+                        {/* Table Header */}
+                        <thead className="bg-red-500 text-white text-lg">
+                        <tr>
+                            <th className="px-6 py-4 text-left">Order ID</th>
+                            <th className="px-6 py-4 text-left">Customer Name</th>
+                            <th className="px-6 py-4 text-left">Date</th>
+                            <th className="px-6 py-4 text-left">Total</th>
+                            <th className="px-6 py-4 text-left">Discount</th>
+                            <th className="px-6 py-4 text-left">Subtotal</th>
                         </tr>
-                    ))
-                }
-                </tbody>
-            </table>
+                        </thead>
+                        {/* Table Body */}
+                        <tbody>
+                        {orders.map((order: Order) => (
+                            <tr
+                                key={order.orderId}
+                                className="hover:bg-blue-100 cursor-pointer transition duration-200"
+                                onClick={() => handleOrder(order)}
+                            >
+                                <td className="px-6 py-4 border-b border-gray-200">{order.orderId}</td>
+                                <td className="px-6 py-4 border-b border-gray-200">{order.customerName}</td>
+                                <td className="px-6 py-4 border-b border-gray-200">{order.date}</td>
+                                <td className="px-6 py-4 border-b border-gray-200">{order.total}</td>
+                                <td className="px-6 py-4 border-b border-gray-200">{order.discount}</td>
+                                <td className="px-6 py-4 border-b border-gray-200">{order.subtotal}</td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </>
     )
 }
